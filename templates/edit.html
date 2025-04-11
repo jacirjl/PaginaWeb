@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Pessoa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Editar Pessoa</h1>
+
+    <form method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" value="{{ pessoa[1] }}" required><br>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" name="endereco" value="{{ pessoa[2] }}" required><br>
+
+        <label for="data_nascimento">Nascimento:</label>
+        <input type="date" name="data_nascimento" value="{{ pessoa[3] }}" required><br>
+
+        <label for="salario">Salário:</label>
+        <input type="number" name="salario" step="0.01" value="{{ pessoa[4] }}" required><br>
+
+        <button type="submit">Salvar Alterações</button>
+    </form>
+</body>
+</html>

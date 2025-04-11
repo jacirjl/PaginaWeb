@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro de Pessoas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Cadastro de Pessoas</h1>
+
+    <h2>Cadastrar Nova Pessoa</h2>
+    <form method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" required><br>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" name="endereco" required><br>
+
+        <label for="data_nascimento">Nascimento:</label>
+        <input type="date" name="data_nascimento" required><br>
+
+        <label for="salario">Salário:</label>
+        <input type="number" name="salario" step="0.01" required><br>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <h2>Pessoas Cadastradas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Nascimento</th>
+                <th>Salário</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pessoa in pessoas %}
+            <tr>
+                <td>{{ pessoa[1] }}</td>
+                <td>{{ pessoa[2] }}</td>
+                <td>{{ pessoa[3] }}</td>
+                <td>{{ pessoa[4] }}</td>
+                <td>
+                    <a href="{{ url_for('edit', pessoa_id=pessoa[0]) }}">Editar</a>
+                    <form method="POST" action="{{ url_for('delete', pessoa_id=pessoa[0]) }}" style="display: inline;">
+                        <button type="submit">Deletar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
