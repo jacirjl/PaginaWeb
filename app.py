@@ -76,7 +76,7 @@ def delete(pessoa_id):
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    # app.run()
+    app.run()
     # app.run(debug=True)
     # app.run(debug=True)
-    app.run(debug=True)
+    # app.run(debug=True)
